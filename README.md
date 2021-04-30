@@ -1,3 +1,3 @@
 # 3D Equation Modeller
 
-Simple starter framework for THREE.js projects.
+Takes custom math equations and models them in 3D as a function of time.
