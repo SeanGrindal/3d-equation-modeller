@@ -1,0 +1,28 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html,
+body {
+   overflow: hidden;
+   font-family: 'Josefin Sans', sans-serif;
+}
+
+canvas.webgl {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   outline: none;
+   transition: transform 400ms;
+   will-change: transform;
+}
+
+.options-bar--open {
+   canvas.webgl {
+      transform: translateX(-200px);
+   }
+}

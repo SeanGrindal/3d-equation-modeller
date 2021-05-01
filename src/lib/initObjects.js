@@ -18,7 +18,7 @@ function buildAxis( src, dst, color) {
 }
 
 export function initObjects(sketch) {
-   // Hanlde Axis Helpers
+   // Hanlde Axis 
    const xAxis = buildAxis(
       [ -1.5, 0, 0 ],
       [ 1.5, 0, 0 ],
@@ -32,22 +32,14 @@ export function initObjects(sketch) {
    )
 
    const zAxis = buildAxis(
-      [ 0, -1, 0 ],
-      [ 0, 1, 0 ],
+      [ 0, -1.05, 0 ],
+      [ 0, 1.05, 0 ],
       0x000000,
    )
 
    sketch.scene.add(xAxis)
    sketch.scene.add(yAxis)
    sketch.scene.add(zAxis)
-
-   // const gridHelper = new THREE.GridHelper( 3, 3, 0x000000 )
-   // sketch.scene.add( gridHelper );
-
-   // const axesHelper = new THREE.AxesHelper( 3 );
-   // const lineSegment = new LineSegments(new BufferGeometry)
-   // sketch.scene.add( axesHelper );
-
 
    // Handle Plane
    const properties = {
@@ -69,11 +61,11 @@ export function initObjects(sketch) {
          vec3 pos = position;
 
          vec2 scaledUv = uv;
-         scaledUv.x = uv.x * uXAxis;
-         scaledUv.y = uv.y * uYAxis;
+         scaledUv.x = (uv.x - 0.5) * uXAxis;
+         scaledUv.y = (uv.y - 0.5) * uYAxis;
 
          // Equation for Z elevation
-         ${func ? `pos.z += (${func}) / uZAxis;` : ''}
+         ${func ? `pos.z += (${func}) / (uZAxis * 0.5);` : ''}
 
          vec4 mvPosition = modelViewMatrix * vec4( pos, 1.0 );
 

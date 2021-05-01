@@ -32,5 +32,7 @@ function filterRawInput(raw) {
       return n.includes('.') ? n : `${n}.0` 
    })
 
+   console.log(filtered)
+
    return filtered
 }

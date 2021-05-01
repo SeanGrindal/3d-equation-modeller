@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 
 import * as THREE from 'three'
 
@@ -8,6 +8,7 @@ import { initEvents } from './lib/initEvents'
 import { initControls } from './lib/initControls'
 
 import { handleInputs } from './lib/handleInputs'
+import { handleOptions } from './lib/handleOptions'
 
 class Sketch {
     constructor() {
@@ -40,6 +41,7 @@ class Sketch {
         initControls(this)
 
         handleInputs(this)
+        handleOptions(this)
 
         this.tick()
     }
