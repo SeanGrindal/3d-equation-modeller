@@ -28,7 +28,7 @@ function filterRawInput(raw) {
    filtered = filtered.replace(/Y/g, 'scaledUv.y')
    filtered = filtered.replace(/TIME/g, 'uTime')
 
-   filtered = filtered.replace(/[1-9]\d*(\.\d+)?/g, (n) => { 
+   filtered = filtered.replace(/[0-9]\d*(\.\d+)?/g, (n) => { 
       return n.includes('.') ? n : `${n}.0` 
    })
 

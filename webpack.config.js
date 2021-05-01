@@ -1,12 +1,13 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 module.exports = {
     entry: path.resolve(__dirname, './src/index.js'),
     output:
     {
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, './dist')
     },
     devtool: 'source-map',
@@ -20,7 +21,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             minify: true
-        })
+        }),
+        new MiniCssExtractPlugin()
     ],
     module:
     {
@@ -48,6 +50,12 @@ module.exports = {
                 use:
                 [
                     'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
+                    },
                     'css-loader',
                     'sass-loader'
                 ]
