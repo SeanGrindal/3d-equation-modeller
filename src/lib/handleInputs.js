@@ -22,17 +22,28 @@ export function handleInputs(sketch) {
 
 
 function filterRawInput(raw) {
-   let filtered = raw
+   // Remove all whitespace
+   let filtered = raw.replace(/\s/g, '')
 
-   filtered = filtered.replace(/X/g, 'scaledUv.x')
-   filtered = filtered.replace(/Y/g, 'scaledUv.y')
-   filtered = filtered.replace(/TIME/g, 'uTime')
+   // Handle ^ powers
+   // const matched = filtered.match(/([0-9A-Za-z.]*)(\^)([0-9.]*)/g)
+   // if (matched) {
+   //    matched.forEach(match => {
+   //       const sides = match.split('^')
+   
+   //       filtered = filtered.replace(match, `pow(${sides[0]}, ${sides[1]})`)
+   //    })
+   // }
 
-   filtered = filtered.replace(/[0-9]\d*(\.\d+)?/g, (n) => { 
+   // Hanlde X, Y, and TIME variables
+   filtered = filtered.replace(/x|X/g, 'scaledUv.x')
+   filtered = filtered.replace(/y|Y/g, 'scaledUv.y')
+   filtered = filtered.replace(/time|TIME/g, 'uTime')
+
+   // Float numbers for GLSL
+   filtered = filtered.replace(/(\d*\.)?\d+/g, (n) => { 
       return n.includes('.') ? n : `${n}.0` 
    })
-
-   console.log(filtered)
 
    return filtered
 }

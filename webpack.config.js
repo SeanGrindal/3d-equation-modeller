@@ -20,7 +20,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
-            minify: true
+            minify: true,
+            favicon: './static/favicons/favicon-16x16.png',
         }),
         new MiniCssExtractPlugin()
     ],
